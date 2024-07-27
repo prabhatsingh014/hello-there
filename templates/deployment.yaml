@@ -38,12 +38,10 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /hello
+            tcpSocket:
               port: 3001
           readinessProbe:
-            httpGet:
-              path: /hello
+            tcpSocket:
               port: 3001
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
