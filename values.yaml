@@ -14,6 +14,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+containerPort: 3001
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -37,12 +38,12 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 3001
+  type: NodePort
+  port: 80
 
 servicePreview:
-  type: ClusterIP
-  port: 3002
+  type: NodePort
+  port: 80
 
 ingress:
   enabled: false

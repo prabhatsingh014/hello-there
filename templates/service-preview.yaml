@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.servicePreview.type }}
   ports:
     - port: {{ .Values.servicePreview.port }}
-      targetPort: http
+      targetPort: {{ .Values.containerPort }}
       protocol: TCP
       name: http
   selector:
