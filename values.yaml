@@ -40,6 +40,10 @@ service:
   type: ClusterIP
   port: 3001
 
+servicePreview:
+  type: ClusterIP
+  port: 3002
+
 ingress:
   enabled: false
   className: ""
