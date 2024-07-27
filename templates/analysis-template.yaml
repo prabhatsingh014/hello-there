@@ -78,7 +78,7 @@ spec:
                 args:
                 - |
                   FITNESS_RESULT="false"
-                  CANARY_SERVICE_URL="http://hello-there-preview.default.svc.cluster.local/hello"
+                  CANARY_SERVICE_URL="http://hello-there-preview.helm-chart.svc.cluster.local/hello"
 
                   # Perform the fitness test
                   RESPONSE=$(curl -s $CANARY_SERVICE_URL)
