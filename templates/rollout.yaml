@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Rollout
+metadata:
+  name: {{ include "hello-there.fullname" . }}
+  labels:
+    {{- include "hello-there.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "hello-there.selectorLabels" . | nindent 6 }}
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: true
+      autoPromotionSeconds: 30
+      activeService: {{ include "hello-there.fullname" . }}
+      previewService: {{ include "hello-there.fullname" . }}-preview
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "hello-there.fullname" . }}
+    scaleDown: onsuccess
